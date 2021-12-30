@@ -151,7 +151,7 @@ class CPU_Usage {
 	//----------------------------------------
 	//Wait number of idle milliseconds
 	void wait_idle_ms(uint32_t ms){
-		//(just calling multiple times to wait for 100 micros saves a lot of code but also adds error)
+		//(just calling multiple times to wait for 100 micros saves a lot of code but also adds some extra waiting time)
 		while(ms){
 			wait_idle_micros_100();
 			wait_idle_micros_100();
@@ -217,7 +217,7 @@ void sim_usage(int perc){
 		cpu_usage.wait_idle_ms(100-perc);
 	}
 	if(100-perc == 0)
-		cpu_usage.wait_idle_ms(1); //make sure to call at least once per second for usage calculation
+		cpu_usage.wait_idle_ms(1); //make sure to call at least once per second with parameter > 0 for usage calculation
 }
 
 
