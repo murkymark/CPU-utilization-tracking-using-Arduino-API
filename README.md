@@ -1,3 +1,6 @@
-# CPU-utilization-tracking-using-Arduino-API
+# CPU utilization tracking using Arduino API
 
-See *.ino file for class and example code.
+Class for idle waiting and automatic utilization percentage calculation.
+Uses "micros()" from Arduino API to get current time.
+
+See *.ino file for more information, class and example code.
