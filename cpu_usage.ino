@@ -33,7 +33,7 @@ simplified example:
 
 Overflow issue:
 - An unsigned 32bit int measures "micros"
-- At first the full the second boundary in micros is 0 + X * 1000000
+- At first the full second boundary in micros is 0 + X * 1000000
 - After the first overflow of micros() at 4294967296 (4295 seconds) it shifts to 32704 + X * 1000000 (by 32704 per overflow)
 - We just ignore it here, because the measure error is too small
 */
@@ -93,8 +93,7 @@ class CPU_Usage {
 	//----------------------------------------
 	//Wait 100 idle microseconds and keep track of usage ratio
 	//This whole function code time counts as idle
-	//(I have measured ca. 20 micros lost per call on a 160MHz MCU)
-	//@8MHz: 80000 cylces (enough for calculations)
+	//@8MHz: 800 cycles (enough for calculations?)
 	void wait_idle_micros_100(){
 		time_start = micros(); //get reference timestamp at the very start
 		
@@ -127,7 +126,7 @@ class CPU_Usage {
 			time_start_biased += bias;
 			time_stop_biased += bias;
 		}
-	
+		
 		int us_to_full_sec = micros_to_sec_boundary(time_start_biased); //remaining micros to full second
 		
 		//if second boundary reached
